@@ -34,7 +34,6 @@ async function getContactById(contactId) {
 async function removeContact(contactId) {
   const contacts = await readFile();
   const contact = contacts.filter((contact) => contact.id !== contactId);
-  // const [contact] = contacts.splice(contactId, 1);
 
   const newContacts = await writeFile(contact);
 
@@ -53,16 +52,9 @@ async function addContact(name, email, phone) {
 
   contacts.push(newContacts);
 
-  // const newContacts =  contacts.push({
-  //   id: nanoid(8),
-  //   name,
-  //   email,
-  //   phone,
-  // });
-
   await writeFile(contacts);
 
-  return newContacts;
+  return contacts;
 }
 
 module.exports = {
